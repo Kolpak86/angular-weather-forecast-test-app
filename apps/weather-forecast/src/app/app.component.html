@@ -1,15 +1,9 @@
-<header>
-  <input type="text" name="search" placeholder="Search.." />
-  <div>
-    <label for="f-option" class="l-radio">
-      <input type="radio" checked id="f-option" name="selector" tabindex="1" />
-      <span>Hour</span>
-    </label>
-    <label for="s-option" class="l-radio">
-      <input type="radio" id="s-option" name="selector" tabindex="2" />
-      <span>Day</span>
-    </label>
-  </div>
+<header [formGroup]="foreCastForm">
+  <ng-container *ngFor="let formItem of dynamicFormFields">
+    <angular-dev-test-task-dynamic-form
+      [formItem]="formItem"
+    ></angular-dev-test-task-dynamic-form>
+  </ng-container>
 </header>
 <main>
   <angular-dev-test-task-table></angular-dev-test-task-table>

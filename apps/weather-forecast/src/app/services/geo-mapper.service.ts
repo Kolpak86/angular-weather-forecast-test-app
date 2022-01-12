@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Coordinates } from '../models/coordinates';
+import { Coordinates } from '../models';
 
 @Injectable({
   providedIn: 'root',
