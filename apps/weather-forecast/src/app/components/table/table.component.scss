@@ -1,0 +1,25 @@
+@import '../../../man.scss';
+
+#cities {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  td,
+  th {
+    border: 1px solid $table-primary;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: $table-secondary;
+  }
+  tr:hover {
+    background-color: $table-primary;
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: $primary;
+    color: white;
+  }
+}
