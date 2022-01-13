@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { DynamicFormField } from '../../models';
 
@@ -15,7 +10,6 @@ import { DynamicFormField } from '../../models';
         <div *ngSwitchCase="'text'">
           <input
             type="text"
-            name="search"
             placeholder="Search.."
             [formControlName]="formItem.id"
           />
@@ -23,12 +17,12 @@ import { DynamicFormField } from '../../models';
         <ng-container *ngSwitchDefault>
           <label
             *ngFor="let option of formItem.radioMenuOptions | keyvalue"
-            [for]="'h-option-' + option.key"
+            [for]="'option-' + option.key"
             class="l-radio"
           >
             <input
               type="radio"
-              [id]="'h-option-' + option.key"
+              [id]="'option-' + option.key"
               [value]="option.key"
               [formControlName]="formItem.id"
             />
