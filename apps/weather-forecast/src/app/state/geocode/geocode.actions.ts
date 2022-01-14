@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Coordinates, DataTable } from '../../models';
+import { Coordinates } from '../../models';
 import { TimeTemperature } from '../../models/time-temperature';
 
 export const fetchGeo = createAction(
@@ -19,5 +19,5 @@ export const fetchGeoFailure = createAction(
 
 export const changeDailyHourly = createAction(
   '[Form Component] - Changed option',
-  props<{ dailyHourlyOpt: TimeTemperature }>()
+  props<{ timeTemperatureOpt: TimeTemperature }>()
 );

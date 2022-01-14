@@ -1,9 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DataTable } from '../../models';
+import { TimeTemperature } from '../../models/time-temperature';
 import { AppState } from '../../state/app.state';
-import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-forecast.selectors';
+import {
+  selectDailyWeatherForecastInfo,
+  selectHourlyWeatherForecastInfo,
+} from '../../state/weather-forecast/weather-forecast.selectors';
 
 @Component({
   selector: 'angular-dev-test-task-table',
@@ -22,13 +26,26 @@ import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-
     </table>
   `,
   styleUrls: ['./table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
   dataTable$!: Observable<DataTable>;
+  private subscription = new Subscription();
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.dataTable$ = this.store.select(selectWeatherForecastInfo);
+    this.subscription = this.store
+      .select((state) => state.geocode.timeTemperatureOpt)
+      .subscribe((dayHourOpt) => {
+        if (dayHourOpt === TimeTemperature.hourly) {
+          this.dataTable$ = this.store.select(selectHourlyWeatherForecastInfo);
+        } else {
+          this.dataTable$ = this.store.select(selectDailyWeatherForecastInfo);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,8 +1,11 @@
 import { createAction, props } from '@ngrx/store';
 import { WeatherForecastInfo } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 
-export const loadWeatherForecast = createAction(
-  '[Table Component] - Load Forecast',
+export const loadDailyWeatherForecast = createAction(
+  '[Table Component] - Load Daily Forecast',
+  props<WeatherForecastInfo>()
+);
+export const loadHourlyWeatherForecast = createAction(
+  '[Table Component] - Load Hourly Forecast',
   props<WeatherForecastInfo>()
 );

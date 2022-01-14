@@ -4,6 +4,8 @@ export interface Coordinates {
   lat: string;
   lon: string;
   name: string;
+  hourlyName: string;
+  dailyName: string;
   timeTemperatureOpt: TimeTemperature;
 }
 

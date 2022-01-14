@@ -9,9 +9,13 @@ export const initialState: WeatherForecastInfo = {
 
 export const weatherForecastReducer = createReducer(
   initialState,
-  on(WeatherForecastActions.loadWeatherForecast, (state, info) => ({
+
+  on(WeatherForecastActions.loadDailyWeatherForecast, (state, { daily }) => ({
     ...state,
-    daily: info.daily,
-    hourly: info.hourly,
+    daily,
+  })),
+  on(WeatherForecastActions.loadHourlyWeatherForecast, (state, { hourly }) => ({
+    ...state,
+    hourly,
   }))
 );
