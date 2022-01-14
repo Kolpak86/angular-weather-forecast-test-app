@@ -1,17 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { debounceTime, Subscription } from 'rxjs';
 import { DynamicFormField } from './models';
+import { TimeTemperature } from './models/time-temperature';
+import { AppState } from './state/app.state';
+import { changeDailyHourly, fetchGeo } from './state/geocode/geocode.actions';
 
 @Component({
   selector: 'angular-dev-test-task-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   foreCastForm!: FormGroup;
   dynamicFormFields!: DynamicFormField[];
 
-  constructor(private fb: FormBuilder) {}
+  private subscription = new Subscription();
+
+  get search(): AbstractControl | null {
+    return this.foreCastForm.get('dynamicText');
+  }
+
+  get radio(): AbstractControl | null {
+    return this.foreCastForm.get('dynamicRadio');
+  }
+
+  constructor(private fb: FormBuilder, private store: Store<AppState>) {}
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.foreCastForm = this.fb.group({});
@@ -21,8 +40,8 @@ export class AppComponent implements OnInit {
       {
         id: 'dynamicRadio',
         type: 'radio',
-        value: 'days',
-        radioMenuOptions: { hours: 'Hours', days: 'Days' },
+        value: TimeTemperature.hourly,
+        radioMenuOptions: { hourly: 'Hours', daily: 'Days' },
       },
     ];
 
@@ -30,5 +49,18 @@ export class AppComponent implements OnInit {
       const formControl = this.fb.control(formItem.value);
       this.foreCastForm.addControl(formItem.id, formControl);
     });
+
+    this.subscription.add(
+      this.search?.valueChanges.pipe(debounceTime(400)).subscribe((name) => {
+        this.store.dispatch(
+          fetchGeo({ name, timeTemperatureOpt: this.radio?.value })
+        );
+      })
+    );
+    this.subscription.add(
+      this.radio?.valueChanges.subscribe((value) => {
+        this.store.dispatch(changeDailyHourly({ dailyHourlyOpt: value }));
+      })
+    );
   }
 }

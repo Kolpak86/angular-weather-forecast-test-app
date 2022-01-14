@@ -10,7 +10,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { GeocodeEffects } from './state/geocode/geocode.effects';
 import { StoreModule } from '@ngrx/store';
+import { WeatherForecastEffects } from './state/weather-forecast/weather-forecast.effects';
+import { weatherForecastReducer } from './state/weather-forecast/weather-forecast.reducer';
 import { geocodeReducer } from './state/geocode/geocode.reducer';
+import { TableDatePipe } from './utilities/pipes/table-date.pipe';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,15 +22,19 @@ import { geocodeReducer } from './state/geocode/geocode.reducer';
     NxWelcomeComponent,
     TableComponent,
     DynamicInputComponent,
+    TableDatePipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    EffectsModule.forRoot([GeocodeEffects]),
-    StoreModule.forRoot({ geocode: geocodeReducer }),
+    EffectsModule.forRoot([GeocodeEffects, WeatherForecastEffects]),
+    StoreModule.forRoot({
+      geocode: geocodeReducer,
+      weatherForecast: weatherForecastReducer,
+    }),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,29 +1,23 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
-export interface DataTable {
-  column: string;
-  row: string[];
-}
-
-const Data = [
-  { column: 'City', row: ['Minsk', '17 C', '17 C', '17 C', '17 C'] },
-  { column: '15 hr', row: ['Minsk', '17 C', '17 C', '17 C', '17 C'] },
-  { column: '18 hr', row: ['Minsk', '17 C', '17 C', '17 C', '17 C'] },
-  { column: '21 hr', row: ['Minsk', '17 C', '17 C', '17 C', '17 C'] },
-  { column: '24 hr', row: ['Minsk', '17 C', '17 C', '17 C', '17 C'] },
-];
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { DataTable } from '../../models';
+import { AppState } from '../../state/app.state';
+import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-forecast.selectors';
 
 @Component({
   selector: 'angular-dev-test-task-table',
   template: `
-    <table id="cities">
+    <table *ngIf="dataTable$ | async as dataTable" id="cities">
       <tr>
-        <th *ngFor="let item of dataTable">
-          {{ item.column }}
+        <th *ngFor="let item of dataTable.column; index as i">
+          {{ item | tableDate }}
         </th>
       </tr>
-      <tr *ngFor="let item of dataTable">
-        <td *ngFor="let cell of item.row">{{ cell }}</td>
+      <tr *ngFor="let row of dataTable.row">
+        <td *ngFor="let cell of row; index as i">
+          {{ i === 0 ? cell : cell + ' C' }}
+        </td>
       </tr>
     </table>
   `,
@@ -31,8 +25,10 @@ const Data = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
-  dataTable: DataTable[] = Data;
-  constructor() {}
+  dataTable$!: Observable<DataTable>;
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataTable$ = this.store.select(selectWeatherForecastInfo);
+  }
 }

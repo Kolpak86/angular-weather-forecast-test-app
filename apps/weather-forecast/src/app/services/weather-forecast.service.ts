@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Coordinates } from '../models';
+import { Coordinates, WeatherForecastInfo } from '../models';
+import { TimeTemperature } from '../models/time-temperature';
 import { GeoMapperService } from './geo-mapper.service';
+
+export type HourDayOpt = 'hourly | daily';
 
 @Injectable({
   providedIn: 'root',
@@ -24,10 +27,14 @@ export class WeatherForecastService {
   getForeCast(
     lat: string,
     lon: string,
-    exclude: 'hourly | daily'
-  ): Observable<any> {
-    return this.http.get(
-      `${this.weatherApi}data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,${exclude},alerts&appid=${this.apiKey}`
+    exclude: TimeTemperature
+  ): Observable<WeatherForecastInfo> {
+    const excludeValue =
+      exclude === TimeTemperature.hourly
+        ? TimeTemperature.daily
+        : TimeTemperature.hourly;
+    return this.http.get<WeatherForecastInfo>(
+      `${this.weatherApi}data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,${excludeValue},alerts&appid=${this.apiKey}&units=metric`
     );
   }
 }

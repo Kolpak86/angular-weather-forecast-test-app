@@ -6,9 +6,11 @@ import { Coordinates } from '../models';
 })
 export class GeoMapperService {
   toClient(coordinates: Coordinates[]): Coordinates {
+    const { lat, lon, name } = coordinates[0];
     return {
-      lat: coordinates[0].lat,
-      lon: coordinates[0].lon,
-    };
+      lat,
+      lon,
+      name,
+    } as Coordinates;
   }
 }

@@ -1,9 +1,10 @@
 import { createAction, props } from '@ngrx/store';
-import { Coordinates } from '../../models';
+import { Coordinates, DataTable } from '../../models';
+import { TimeTemperature } from '../../models/time-temperature';
 
 export const fetchGeo = createAction(
   '[App Component] - Fetched Geo',
-  props<{ name: string }>()
+  props<{ name: string; timeTemperatureOpt: TimeTemperature }>()
 );
 
 export const fetchGeoSuccess = createAction(
@@ -14,4 +15,9 @@ export const fetchGeoSuccess = createAction(
 export const fetchGeoFailure = createAction(
   '[Weather API] Coordinates Fetched Failure',
   props<{ error: string }>()
+);
+
+export const changeDailyHourly = createAction(
+  '[Form Component] - Changed option',
+  props<{ dailyHourlyOpt: TimeTemperature }>()
 );
