@@ -16,7 +16,7 @@ import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-
       </tr>
       <tr *ngFor="let row of dataTable.row">
         <td *ngFor="let cell of row; index as i">
-          {{ i === 0 ? cell : cell + ' C' }}
+          {{ cell | tableTemperature: i }}
         </td>
       </tr>
     </table>

@@ -15,6 +15,7 @@ import { weatherForecastReducer } from './state/weather-forecast/weather-forecas
 import { geocodeReducer } from './state/geocode/geocode.reducer';
 import { TableDatePipe } from './utilities/pipes/table-date.pipe';
 import { DatePipe } from '@angular/common';
+import { TableTemperaturePipe } from './utilities/pipes/table-temperature.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DatePipe } from '@angular/common';
     TableComponent,
     DynamicInputComponent,
     TableDatePipe,
+    TableTemperaturePipe,
   ],
   imports: [
     BrowserModule,
