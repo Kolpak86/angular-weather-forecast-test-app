@@ -2,12 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { DataTable } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 import { AppState } from '../../state/app.state';
-import {
-  selectDailyWeatherForecastInfo,
-  selectHourlyWeatherForecastInfo,
-} from '../../state/weather-forecast/weather-forecast.selectors';
+import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-forecast.selectors';
 
 @Component({
   selector: 'angular-dev-test-task-table',
@@ -34,15 +30,7 @@ export class TableComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.subscription = this.store
-      .select((state) => state.geocode.timeTemperatureOpt)
-      .subscribe((dayHourOpt) => {
-        if (dayHourOpt === TimeTemperature.hourly) {
-          this.dataTable$ = this.store.select(selectHourlyWeatherForecastInfo);
-        } else {
-          this.dataTable$ = this.store.select(selectDailyWeatherForecastInfo);
-        }
-      });
+    this.dataTable$ = this.store.select(selectWeatherForecastInfo);
   }
 
   ngOnDestroy(): void {
