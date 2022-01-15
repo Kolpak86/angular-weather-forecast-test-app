@@ -6,6 +6,7 @@ import { DynamicFormField } from './models';
 import { TimeTemperature } from './models/time-temperature';
 import { AppState } from './state/app.state';
 import { changeDailyHourly, fetchGeo } from './state/geocode/geocode.actions';
+import { clearWeatherForecast } from './state/weather-forecast/weather-forecast.actions';
 
 @Component({
   selector: 'angular-dev-test-task-root',
@@ -52,9 +53,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.search?.valueChanges.pipe(debounceTime(400)).subscribe((name) => {
-        this.store.dispatch(
-          fetchGeo({ name, timeTemperatureOpt: this.radio?.value })
-        );
+        if (name) {
+          this.store.dispatch(
+            fetchGeo({ name, timeTemperatureOpt: this.radio?.value })
+          );
+        } else {
+          this.store.dispatch(
+            clearWeatherForecast({ timeTemperatureOpt: this.radio?.value })
+          );
+        }
       })
     );
     this.subscription.add(

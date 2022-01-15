@@ -1,10 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { WeatherForecastInfo } from '../../models';
+import { TimeTemperature } from '../../models/time-temperature';
 import * as WeatherForecastActions from './weather-forecast.actions';
 
 export const initialState: WeatherForecastInfo = {
   daily: [],
   hourly: [],
+  timeTemperatureOpt: TimeTemperature.hourly,
 };
 
 export const weatherForecastReducer = createReducer(
@@ -17,5 +19,14 @@ export const weatherForecastReducer = createReducer(
   on(WeatherForecastActions.loadHourlyWeatherForecast, (state, { hourly }) => ({
     ...state,
     hourly,
-  }))
+  })),
+  on(
+    WeatherForecastActions.clearWeatherForecast,
+    (state, { timeTemperatureOpt }) => {
+      if (timeTemperatureOpt === TimeTemperature.hourly) {
+        return { ...state, hourly: [] };
+      }
+      return { ...state, daily: [] };
+    }
+  )
 );
