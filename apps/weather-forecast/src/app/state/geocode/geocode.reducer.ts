@@ -1,11 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { Coordinates } from '../../models';
+import { CityTimeTemperature } from '../../models';
 import { TimeTemperature } from '../../models/time-temperature';
 import * as GeocodeActions from './geocode.actions';
 
-export const initialState: Coordinates = {
-  lat: '',
-  lon: '',
+export const initialState: CityTimeTemperature = {
   name: '',
   hourlyName: '',
   dailyName: '',
@@ -14,23 +12,18 @@ export const initialState: Coordinates = {
 
 export const geocodeReducer = createReducer(
   initialState,
-  on(
-    GeocodeActions.fetchGeoSuccess,
-    (state, { lat, lon, name, timeTemperatureOpt }) => {
-      const city =
-        timeTemperatureOpt === TimeTemperature.hourly
-          ? { hourlyName: name }
-          : { dailyName: name };
-      return {
-        ...state,
-        lat,
-        lon,
-        name: name,
-        timeTemperatureOpt,
-        ...city,
-      };
-    }
-  ),
+  on(GeocodeActions.fetchGeoSuccess, (state, { name, timeTemperatureOpt }) => {
+    const city =
+      timeTemperatureOpt === TimeTemperature.hourly
+        ? { hourlyName: name }
+        : { dailyName: name };
+    return {
+      ...state,
+      name: name,
+      timeTemperatureOpt,
+      ...city,
+    };
+  }),
   on(GeocodeActions.fetchGeoFailure, (state, { error }) => ({
     ...state,
     error,

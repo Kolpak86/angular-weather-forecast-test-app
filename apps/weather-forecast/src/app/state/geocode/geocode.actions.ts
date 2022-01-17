@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Coordinates } from '../../models';
+import { GeoInfo } from '../../models';
 import { TimeTemperature } from '../../models/time-temperature';
 
 export const fetchGeo = createAction(
@@ -9,7 +9,7 @@ export const fetchGeo = createAction(
 
 export const fetchGeoSuccess = createAction(
   '[Weather API] Coordinates Fetched Success',
-  props<Coordinates>()
+  props<GeoInfo>()
 );
 
 export const fetchGeoFailure = createAction(

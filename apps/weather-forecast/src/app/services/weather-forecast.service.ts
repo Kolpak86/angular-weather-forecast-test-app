@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Coordinates, WeatherForecastInfo } from '../models';
+import { GeoInfo, WeatherForecastInfo } from '../models';
 import { TimeTemperature } from '../models/time-temperature';
 import { GeoMapperService } from './geo-mapper.service';
 
@@ -16,9 +16,9 @@ export class WeatherForecastService {
 
   constructor(private http: HttpClient, private geoMapper: GeoMapperService) {}
 
-  getGeocode(city: string): Observable<Coordinates> {
+  getGeocode(city: string): Observable<GeoInfo> {
     return this.http
-      .get<Coordinates[]>(
+      .get<GeoInfo[]>(
         `${this.weatherApi}geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}`
       )
       .pipe(map((coordinates) => this.geoMapper.toClient(coordinates)));

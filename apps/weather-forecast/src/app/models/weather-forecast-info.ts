@@ -1,13 +1,18 @@
 import { TimeTemperature } from './time-temperature';
 
-export interface Coordinates {
-  lat: string;
-  lon: string;
+export interface CityTimeTemperature {
   name: string;
   hourlyName: string;
   dailyName: string;
   timeTemperatureOpt: TimeTemperature;
 }
+
+export interface Coordinates {
+  lat: string;
+  lon: string;
+}
+
+export type GeoInfo = CityTimeTemperature & Coordinates;
 
 export interface WeatherForecastInfo {
   daily: HourlyDailyTemperature[];

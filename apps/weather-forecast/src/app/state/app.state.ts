@@ -1,6 +1,6 @@
-import { Coordinates, WeatherForecastInfo } from '../models';
+import { CityTimeTemperature, WeatherForecastInfo } from '../models';
 
 export interface AppState {
   weatherForecast: WeatherForecastInfo;
-  geocode: Coordinates;
+  geocode: CityTimeTemperature;
 }
