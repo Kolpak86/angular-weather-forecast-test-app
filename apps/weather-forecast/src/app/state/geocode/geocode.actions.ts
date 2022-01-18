@@ -4,7 +4,7 @@ import { TimeTemperature } from '../../models/time-temperature';
 
 export const fetchGeo = createAction(
   '[App Component] - Fetched Geo',
-  props<{ name: string; timeTemperatureOpt: TimeTemperature }>()
+  props<{ name: string }>()
 );
 
 export const fetchGeoSuccess = createAction(

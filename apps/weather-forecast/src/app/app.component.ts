@@ -54,9 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.search?.valueChanges.pipe(debounceTime(400)).subscribe((name) => {
         if (name) {
-          this.store.dispatch(
-            fetchGeo({ name, timeTemperatureOpt: this.radio?.value })
-          );
+          this.store.dispatch(fetchGeo({ name }));
         } else {
           this.store.dispatch(
             clearWeatherForecast({ timeTemperatureOpt: this.radio?.value })

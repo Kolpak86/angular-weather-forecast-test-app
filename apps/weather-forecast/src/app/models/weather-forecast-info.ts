@@ -17,7 +17,6 @@ export type GeoInfo = CityTimeTemperature & Coordinates;
 export interface WeatherForecastInfo {
   daily: HourlyDailyTemperature[];
   hourly: HourlyDailyTemperature[];
-  timeTemperatureOpt: TimeTemperature;
 }
 
 export interface Temperature {

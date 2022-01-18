@@ -6,7 +6,6 @@ import * as WeatherForecastActions from './weather-forecast.actions';
 export const initialState: WeatherForecastInfo = {
   daily: [],
   hourly: [],
-  timeTemperatureOpt: TimeTemperature.hourly,
 };
 
 export const weatherForecastReducer = createReducer(
