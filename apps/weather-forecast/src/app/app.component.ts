@@ -42,7 +42,10 @@ export class AppComponent implements OnInit, OnDestroy {
         id: 'dynamicRadio',
         type: 'radio',
         value: TimeTemperature.hourly,
-        radioMenuOptions: { hourly: 'Hours', daily: 'Days' },
+        radioMenuOptions: {
+          [TimeTemperature.hourly]: 'Hours',
+          [TimeTemperature.daily]: 'Days',
+        },
       },
     ];
 
