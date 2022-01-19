@@ -16,7 +16,7 @@ export class WeatherForecastService {
 
   constructor(private http: HttpClient, private geoMapper: GeoMapperService) {}
 
-  getGeocode(city: string): Observable<GeoInfo> {
+  getGeocode(city: string): Observable<GeoInfo | null> {
     return this.http
       .get<GeoInfo[]>(
         `${this.weatherApi}geo/1.0/direct?q=${city}&limit=1&appid=${this.apiKey}`
