@@ -1,11 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DataTable } from '../../models';
 import { AppState } from '../../state/app.state';
 import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-forecast.selectors';
@@ -29,17 +24,12 @@ import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements OnInit, OnDestroy {
+export class TableComponent implements OnInit {
   dataTable$!: Observable<DataTable>;
-  private subscription = new Subscription();
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.dataTable$ = this.store.select(selectWeatherForecastInfo);
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }
