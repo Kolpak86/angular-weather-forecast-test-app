@@ -12,6 +12,10 @@ export const loadHourlyWeatherForecast = createAction(
 );
 
 export const clearWeatherForecast = createAction(
-  '[Table Component] - Clear Table Data',
+  '[Table Component] - Clear Table Data'
+);
+
+export const clearWeatherForecastSuccess = createAction(
+  '[Table Component] - Clear Table Data Success',
   props<{ timeTemperatureOpt: TimeTemperature }>()
 );

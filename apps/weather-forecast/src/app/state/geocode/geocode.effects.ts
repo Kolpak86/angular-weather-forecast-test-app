@@ -5,15 +5,14 @@ import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { WeatherForecastService } from '../../services/weather-forecast.service';
 import { AppState } from '../app.state';
 import * as GeoCodeActions from './geocode.actions';
+import { selectTimeTemperatureOpt } from './geocode.selectors';
 
 @Injectable()
 export class GeocodeEffects {
-  fetchCoordinates = createEffect(() =>
+  fetchCoordinates$ = createEffect(() =>
     this.actions$.pipe(
       ofType(GeoCodeActions.fetchGeo),
-      withLatestFrom(
-        this.store.select((state) => state.geocode.timeTemperatureOpt)
-      ),
+      withLatestFrom(this.store.select(selectTimeTemperatureOpt)),
       switchMap(([action, timeTemperatureOpt]) =>
         this.weatherForecast.getGeocode(action.name).pipe(
           map((coordinates) =>

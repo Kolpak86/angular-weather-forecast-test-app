@@ -59,9 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
         if (name) {
           this.store.dispatch(fetchGeo({ name }));
         } else {
-          this.store.dispatch(
-            clearWeatherForecast({ timeTemperatureOpt: this.radio?.value })
-          );
+          this.store.dispatch(clearWeatherForecast());
         }
       })
     );

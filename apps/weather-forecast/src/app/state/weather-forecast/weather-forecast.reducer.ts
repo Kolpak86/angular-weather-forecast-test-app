@@ -20,7 +20,7 @@ export const weatherForecastReducer = createReducer(
     hourly,
   })),
   on(
-    WeatherForecastActions.clearWeatherForecast,
+    WeatherForecastActions.clearWeatherForecastSuccess,
     (state, { timeTemperatureOpt }) => {
       if (timeTemperatureOpt === TimeTemperature.hourly) {
         return { ...state, hourly: [] };

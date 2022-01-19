@@ -2,12 +2,13 @@ import { createSelector } from '@ngrx/store';
 import { DailyTemperature, DataTable, WeatherForecastInfo } from '../../models';
 import { TimeTemperature } from '../../models/time-temperature';
 import { AppState } from '../app.state';
+import {
+  selectDayCity,
+  selectHourCity,
+  selectTimeTemperatureOpt,
+} from '../geocode/geocode.selectors';
 
 export const selectWeatherForecast = (state: AppState) => state.weatherForecast;
-export const selectHourCity = (state: AppState) => state.geocode.hourlyName;
-export const selectDayCity = (state: AppState) => state.geocode.dailyName;
-export const selectTimeTemperatureOpt = (state: AppState) =>
-  state.geocode.timeTemperatureOpt;
 
 export const selectWeatherForecastInfo = createSelector(
   selectWeatherForecast,
