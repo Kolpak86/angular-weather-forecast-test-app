@@ -64,8 +64,8 @@ export class AppComponent implements OnInit, OnDestroy {
       })
     );
     this.subscription.add(
-      this.radio?.valueChanges.subscribe((value) => {
-        this.store.dispatch(changeDailyHourly({ timeTemperatureOpt: value }));
+      this.radio?.valueChanges.subscribe((timeTemperatureOpt) => {
+        this.store.dispatch(changeDailyHourly({ timeTemperatureOpt }));
       })
     );
   }
