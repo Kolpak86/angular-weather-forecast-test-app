@@ -8,6 +8,10 @@ This project was generated using [Nx](https://nx.dev).
 
 🔎 **Smart, Fast and Extensible Build System**
 
+## Description
+
+This project uses ngrx state management.
+
 ## Quick Start & Documentation
 
 [Nx Documentation](https://nx.dev/angular)
