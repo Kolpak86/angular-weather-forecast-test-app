@@ -8,9 +8,9 @@ import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-
 @Component({
   selector: 'angular-dev-test-task-table',
   template: `
-    <table *ngIf="dataTable$ | async as dataTable" id="cities">
+    <table *ngIf="dataTable$ | async as dataTable; else noData" id="cities">
       <tr>
-        <th *ngFor="let item of dataTable.column; index as i">
+        <th *ngFor="let item of dataTable.column">
           {{ item | tableDate }}
         </th>
       </tr>
@@ -20,12 +20,15 @@ import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-
         </td>
       </tr>
     </table>
+    <ng-template #noData>
+      <p>No data</p>
+    </ng-template>
   `,
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TableComponent implements OnInit {
-  dataTable$!: Observable<DataTable>;
+  dataTable$!: Observable<DataTable | null>;
 
   constructor(private store: Store<AppState>) {}
 

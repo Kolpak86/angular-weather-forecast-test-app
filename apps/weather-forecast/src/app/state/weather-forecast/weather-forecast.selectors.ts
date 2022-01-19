@@ -51,6 +51,10 @@ export const selectWeatherForecastInfo = createSelector(
         });
       }
     }
+
+    if (dataTable.column.length === 0) {
+      return null;
+    }
     return dataTable;
   }
 );
