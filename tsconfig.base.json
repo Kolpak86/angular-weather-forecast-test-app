@@ -17,7 +17,8 @@
     "paths": {
       "@angular-dev-test-task/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
-      ]
+      ],
+      "@angular-dev-test-task/core-data": ["libs/core-data/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

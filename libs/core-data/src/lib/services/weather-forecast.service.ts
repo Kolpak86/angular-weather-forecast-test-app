@@ -8,8 +8,6 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { GeoMapperService } from './geo-mapper.service';
 
-export type HourDayOpt = 'hourly | daily';
-
 @Injectable({
   providedIn: 'root',
 })

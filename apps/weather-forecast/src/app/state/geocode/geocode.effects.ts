@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
-import { WeatherForecastService } from '../../services/weather-forecast.service';
 import { AppState } from '../app.state';
 import * as GeoCodeActions from './geocode.actions';
 import * as WeatherForecastActions from '../weather-forecast/weather-forecast.actions';
 import { selectTimeTemperatureOpt } from './geocode.selectors';
+import { WeatherForecastService } from '@angular-dev-test-task/core-data';
 
 @Injectable()
 export class GeocodeEffects {

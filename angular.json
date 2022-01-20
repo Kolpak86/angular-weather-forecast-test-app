@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "api-interfaces": "libs/api-interfaces",
+    "core-data": "libs/core-data",
     "weather-forecast": "apps/weather-forecast",
     "weather-forecast-e2e": "apps/weather-forecast-e2e"
   }

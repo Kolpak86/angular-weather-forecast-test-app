@@ -16,6 +16,7 @@ import { geocodeReducer } from './state/geocode/geocode.reducer';
 import { TableDatePipe } from './utilities/pipes/table-date.pipe';
 import { DatePipe } from '@angular/common';
 import { TableTemperaturePipe } from './utilities/pipes/table-temperature.pipe';
+import { CoreDataModule } from '@angular-dev-test-task/core-data';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TableTemperaturePipe } from './utilities/pipes/table-temperature.pipe';
       geocode: geocodeReducer,
       weatherForecast: weatherForecastReducer,
     }),
+    CoreDataModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
