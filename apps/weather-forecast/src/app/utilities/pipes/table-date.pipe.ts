@@ -3,8 +3,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TimeTemperature } from '@angular-dev-test-task/api-interfaces';
 
-import { AppState } from '../../state/app.state';
-import { selectTimeTemperatureOpt } from '../../state/geocode/geocode.selectors';
+import {
+  AppState,
+  selectTimeTemperatureOpt,
+} from '@angular-dev-test-task/core-state';
 
 @Pipe({
   name: 'tableDate',

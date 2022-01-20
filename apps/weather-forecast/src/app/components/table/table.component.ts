@@ -1,9 +1,11 @@
 import { DataTable } from '@angular-dev-test-task/api-interfaces';
+import {
+  AppState,
+  selectWeatherForecastInfo,
+} from '@angular-dev-test-task/core-state';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../../state/app.state';
-import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-forecast.selectors';
 
 @Component({
   selector: 'angular-dev-test-task-table',

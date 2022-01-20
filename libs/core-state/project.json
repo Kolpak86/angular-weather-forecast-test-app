@@ -1,0 +1,18 @@
+{
+  "projectType": "library",
+  "root": "libs/core-state",
+  "sourceRoot": "libs/core-state/src",
+  "prefix": "angular-dev-test-task",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core-state/src/**/*.ts",
+          "libs/core-state/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
