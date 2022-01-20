@@ -4,6 +4,7 @@
     "api-interfaces": "libs/api-interfaces",
     "core-data": "libs/core-data",
     "core-state": "libs/core-state",
+    "utility": "libs/utility",
     "weather-forecast": "apps/weather-forecast",
     "weather-forecast-e2e": "apps/weather-forecast-e2e"
   }
