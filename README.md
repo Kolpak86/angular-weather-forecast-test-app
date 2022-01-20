@@ -8,6 +8,9 @@ This project was generated using [Nx](https://nx.dev).
 
 🔎 **Smart, Fast and Extensible Build System**
 
+## Development server
+
+Run `nx serve weather-forecast` for a dev server.
 ## Description
 
 This project uses ngrx state management.
