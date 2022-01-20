@@ -1,6 +1,8 @@
+import {
+  TimeTemperature,
+  WeatherForecastInfo,
+} from '@angular-dev-test-task/api-interfaces';
 import { createAction, props } from '@ngrx/store';
-import { WeatherForecastInfo } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 
 export const loadDailyWeatherForecast = createAction(
   '[Table Component] - Load Daily Forecast',

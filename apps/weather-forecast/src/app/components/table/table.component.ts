@@ -1,7 +1,7 @@
+import { DataTable } from '@angular-dev-test-task/api-interfaces';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { DataTable } from '../../models';
 import { AppState } from '../../state/app.state';
 import { selectWeatherForecastInfo } from '../../state/weather-forecast/weather-forecast.selectors';
 

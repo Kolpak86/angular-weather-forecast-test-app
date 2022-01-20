@@ -1,6 +1,8 @@
+import {
+  GeoInfo,
+  TimeTemperature,
+} from '@angular-dev-test-task/api-interfaces';
 import { createAction, props } from '@ngrx/store';
-import { GeoInfo } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 
 export const fetchGeo = createAction(
   '[App Component] - Fetched Geo',

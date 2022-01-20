@@ -1,6 +1,10 @@
+import {
+  DailyTemperature,
+  DataTable,
+  TimeTemperature,
+  WeatherForecastInfo,
+} from '@angular-dev-test-task/api-interfaces';
 import { createSelector } from '@ngrx/store';
-import { DailyTemperature, DataTable, WeatherForecastInfo } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 import { AppState } from '../app.state';
 import {
   selectDayCity,

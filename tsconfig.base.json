@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-dev-test-task/weather-forecast-lib": [
-        "libs/weather-forecast-lib/src/index.ts"
+      "@angular-dev-test-task/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
       ]
     }
   },

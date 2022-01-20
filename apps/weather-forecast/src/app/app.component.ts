@@ -1,9 +1,11 @@
+import {
+  DynamicFormField,
+  TimeTemperature,
+} from '@angular-dev-test-task/api-interfaces';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { debounceTime, Subscription } from 'rxjs';
-import { DynamicFormField } from './models';
-import { TimeTemperature } from './models/time-temperature';
 import { AppState } from './state/app.state';
 import { changeDailyHourly, fetchGeo } from './state/geocode/geocode.actions';
 import { clearWeatherForecast } from './state/weather-forecast/weather-forecast.actions';

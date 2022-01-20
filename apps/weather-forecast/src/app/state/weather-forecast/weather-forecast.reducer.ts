@@ -1,6 +1,8 @@
+import {
+  TimeTemperature,
+  WeatherForecastInfo,
+} from '@angular-dev-test-task/api-interfaces';
 import { createReducer, on } from '@ngrx/store';
-import { WeatherForecastInfo } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 import * as WeatherForecastActions from './weather-forecast.actions';
 
 export const initialState: WeatherForecastInfo = {

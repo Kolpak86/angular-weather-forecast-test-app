@@ -1,6 +1,6 @@
+import { DynamicFormField } from '@angular-dev-test-task/api-interfaces';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { DynamicFormField } from '../../models';
 
 @Component({
   selector: 'angular-dev-test-task-dynamic-form',

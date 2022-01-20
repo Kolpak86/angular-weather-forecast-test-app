@@ -1,5 +1,5 @@
+import { GeoInfo } from '@angular-dev-test-task/api-interfaces';
 import { Injectable } from '@angular/core';
-import { GeoInfo } from '../models';
 
 @Injectable({
   providedIn: 'root',

@@ -1,8 +1,11 @@
+import {
+  GeoInfo,
+  TimeTemperature,
+  WeatherForecastInfo,
+} from '@angular-dev-test-task/api-interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { GeoInfo, WeatherForecastInfo } from '../models';
-import { TimeTemperature } from '../models/time-temperature';
 import { GeoMapperService } from './geo-mapper.service';
 
 export type HourDayOpt = 'hourly | daily';

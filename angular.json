@@ -1,8 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "api-interfaces": "libs/api-interfaces",
     "weather-forecast": "apps/weather-forecast",
-    "weather-forecast-e2e": "apps/weather-forecast-e2e",
-    "weather-forecast-lib": "libs/weather-forecast-lib"
+    "weather-forecast-e2e": "apps/weather-forecast-e2e"
   }
 }

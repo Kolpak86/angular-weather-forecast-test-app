@@ -1,6 +1,8 @@
+import {
+  CityTimeTemperature,
+  TimeTemperature,
+} from '@angular-dev-test-task/api-interfaces';
 import { createReducer, on } from '@ngrx/store';
-import { CityTimeTemperature } from '../../models';
-import { TimeTemperature } from '../../models/time-temperature';
 import * as GeocodeActions from './geocode.actions';
 
 export const initialState: CityTimeTemperature = {
