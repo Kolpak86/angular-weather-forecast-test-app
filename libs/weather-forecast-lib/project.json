@@ -1,0 +1,18 @@
+{
+  "projectType": "library",
+  "root": "libs/weather-forecast-lib",
+  "sourceRoot": "libs/weather-forecast-lib/src",
+  "prefix": "angular-dev-test-task",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/weather-forecast-lib/src/**/*.ts",
+          "libs/weather-forecast-lib/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
