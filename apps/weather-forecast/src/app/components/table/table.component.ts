@@ -1,6 +1,7 @@
-import { DataTable } from '@angular-dev-test-task/api-interfaces';
+import { DataTable, TimeTemperature } from '@angular-dev-test-task/api-interfaces';
 import {
   AppState,
+  selectTimeTemperatureOpt,
   selectWeatherForecastInfo,
 } from '@angular-dev-test-task/core-state';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
     <table *ngIf="dataTable$ | async as dataTable; else noData" id="cities">
       <tr>
         <th *ngFor="let item of dataTable.column">
-          {{ item | tableDate }}
+          {{ item | tableDate : (timeTemperatureOpt$ | async) }}
         </th>
       </tr>
       <tr *ngFor="let row of dataTable.row">
@@ -31,10 +32,12 @@ import { Observable } from 'rxjs';
 })
 export class TableComponent implements OnInit {
   dataTable$!: Observable<DataTable | null>;
+  timeTemperatureOpt$!: Observable<TimeTemperature>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.dataTable$ = this.store.select(selectWeatherForecastInfo);
+    this.timeTemperatureOpt$ = this.store.select(selectTimeTemperatureOpt);
   }
 }
