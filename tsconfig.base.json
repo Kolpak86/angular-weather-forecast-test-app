@@ -20,6 +20,9 @@
       ],
       "@angular-dev-test-task/core-data": ["libs/core-data/src/index.ts"],
       "@angular-dev-test-task/core-state": ["libs/core-state/src/index.ts"],
+      "@angular-dev-test-task/ui-dynamic-form": [
+        "libs/ui-dynamic-form/src/index.ts"
+      ],
       "@angular-dev-test-task/utility": ["libs/utility/src/index.ts"]
     }
   },

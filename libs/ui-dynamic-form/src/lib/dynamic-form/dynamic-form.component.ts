@@ -3,7 +3,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
-  selector: 'angular-dev-test-task-dynamic-form',
+  selector: 'angular-dev-test-task-ui-dynamic-form',
   template: `
     <ng-container [formGroup]="form">
       <ng-container [ngSwitch]="formItem.type">
@@ -35,7 +35,7 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
   styleUrls: ['./dynamic-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DynamicInputComponent {
+export class DynamicFormComponent {
   @Input() formItem!: DynamicFormField;
 
   form!: FormGroup;
