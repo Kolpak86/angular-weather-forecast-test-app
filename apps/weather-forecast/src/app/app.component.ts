@@ -16,6 +16,19 @@ import { debounceTime, Subscription } from 'rxjs';
 @Component({
   selector: 'angular-dev-test-task-root',
   templateUrl: './app.component.html',
+  styles: [
+    `
+      header,
+      main,
+      section {
+        display: flex;
+        justify-content: center;
+      }
+      main {
+        margin-top: 1rem;
+      }
+    `,
+  ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   foreCastForm!: FormGroup;

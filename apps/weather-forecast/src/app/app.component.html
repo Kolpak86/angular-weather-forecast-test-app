@@ -1,9 +1,14 @@
-<ng-container [formGroup]="foreCastForm">
-  <angular-dev-test-task-dynamic-form
-    *ngFor="let formItem of dynamicFormFields"
-    [formItem]="formItem"
-  ></angular-dev-test-task-dynamic-form>
-</ng-container>
+<header>
+  <h1>Weather Forecast App</h1>
+</header>
+<section>
+  <ng-container [formGroup]="foreCastForm">
+    <angular-dev-test-task-dynamic-form
+      *ngFor="let formItem of dynamicFormFields"
+      [formItem]="formItem"
+    ></angular-dev-test-task-dynamic-form>
+  </ng-container>
+</section>
 <main>
   <angular-dev-test-task-table></angular-dev-test-task-table>
 </main>
