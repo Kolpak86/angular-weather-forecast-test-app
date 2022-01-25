@@ -1,14 +1,16 @@
-import {
-  CityTimeTemperature,
-  TimeTemperature,
-} from '@angular-dev-test-task/api-interfaces';
+import { TimeTemperature } from '@angular-dev-test-task/api-interfaces';
 import { createReducer, on } from '@ngrx/store';
 import * as GeocodeActions from './geocode.actions';
 
-export const initialState: CityTimeTemperature = {
-  name: '',
-  hourlyName: '',
-  dailyName: '',
+export interface GeoState {
+  hourlyCity: string;
+  dailyCity: string;
+  timeTemperatureOpt: TimeTemperature;
+}
+
+export const initialState: GeoState = {
+  hourlyCity: '',
+  dailyCity: '',
   timeTemperatureOpt: TimeTemperature.hourly,
 };
 
@@ -21,7 +23,6 @@ export const geocodeReducer = createReducer(
         : { dailyName: name };
     return {
       ...state,
-      name: name,
       timeTemperatureOpt,
       ...city,
     };
